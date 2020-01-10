@@ -10,7 +10,7 @@ button {border:none;}
 .slider_tab_inner .slide_tab {position:relative;display:inline-block;width:58px;height:48px;padding-right:10px;}
 .slider_tab_inner .slide_tab button {position:relative;width:100%;height:0;padding-top:100%;display:block;overflow:hidden;}
 .slider_tab_inner .slide_tab button img {position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);display:block;width:auto;height:100%;background-size:contain;}
-
+.slider_tab_inner .slide_tab.on button {box-shadow:3px 3px 3px rgba(0,0,0,.2);}
 
 
 
