@@ -1,0 +1,55 @@
+@charset "utf-8";
+@import url(reset.css);
+
+/**common**/
+.clearfix:after {content:""; display:block; clear:both; visibility:hidden; line-height:0; height:0;}
+.clearfix {display:block;}
+.blind {position:absolute; left:-99999px; top:-9999999px; font-size:1px;}
+.block {display:block;}
+.title { font-size:24px; font-weight:700;}
+.desc {padding-top:10px; font-size:16px;}
+
+body {background-color:#222;}
+header {position:fixed; width:320px; top:0; left:0; bottom:0; background-color:#222; box-shadow:inset 0 2px 6px #000; padding:100px 10px 0; background:url(../images/logo_w.png)no-repeat; background-position:0 95%}
+#logo {margin-left:40px; width:140px; height:32px; margin-bottom:80px;}
+#logo a {display:block; width:100%; height:100%; background:url(../images/betree_gr.png)no-repeat;}
+#gnb {}
+/*#gnb.on {background:red;}*/
+#gnb ul > li {padding-left:40px;}
+#gnb li a {display:inline-block; color:#555; border-bottom:1px solid #555; line-height:1.8}
+#gnb li.active > a {color:#87daff; border-bottom-color:#87daff;}
+#gnb li.on > a {color:#999; border-bottom-color:#999;}
+#gnb .tw_depth {}
+#gnb .tw_depth li {padding-left:10px;}
+#gnb .tw_depth li a {}
+
+
+#wrapper {padding:10px 10px 10px 320px; background-color:#222; width:100%; height:100%;}
+#wrapper .container {background-color:#fff; width:100%; padding-top:50px}
+.container .section .intro {font-size:60px; padding:20px 0 25px 50px;}
+.container .section .main_img {width:100%; padding-bottom:37.4%; height:0;}
+.container .section .main_img img {width:100%}
+.container .section .txt_box {padding:40px 0 0 50px; padding-right:16.666%;}
+.container .section .txt_box {}
+.container .section .txt_box .desc {padding-top:10px;}
+
+.container .section:first-child {padding:0;}
+.container .section {padding:50px 0 0 50px; padding-right:16.666%}
+.container .section h2 {line-height:1.6; padding-bottom:25px; font-size:36px;}
+.container .section.ability {}
+.container .section.ability ul {margin-right:-80px;}
+.container .section.ability li {float:left; width:50%; text-align:center; padding-right:80px; position:relative;}
+.container .section.ability li:before {content:''; position:absolute; width:99px; height:99px; background:url(../images/ability.png)no-repeat; top:35px; left:50%; margin-left:-89.5px;}
+.container .section.ability .content:before {background:url(../images/ability.png)no-repeat 0 -99px;}
+.container .section.ability .software {}
+.container .section.ability .content {}
+.container .section.ability .inner {position:relative; padding:160px 10px 20px;}
+.container .section.ability .inner:before {content:''; position:absolute; background-color:#eee; width:0; height:4px; top:0; left:0; transition-duration:.1s; -webkit-transition-timing-function: ease; -moz-transition-timing-function: ease; -ms-transition-timing-function: ease; -o-transition-timing-function: ease; transition-timing-function: ease;}
+.container .section.ability .inner:after {content:''; position:absolute; background-color:#eee; width:0; height:4px; bottom:0; left:0; transition-duration:.1s; -webkit-transition-timing-function: ease; -moz-transition-timing-function: ease; -ms-transition-timing-function: ease; -o-transition-timing-function: ease; transition-timing-function: ease;}
+.container .section.ability .inner .border {position:absolute; display:block; width:100%; height:100%; top:0; left:0;}
+.container .section.ability .inner .border:before {position:absolute; content:''; width:4px; height:0; background-color:#eee; top:0; left:0; transition-duration:.1s; -webkit-transition-timing-function: ease; -moz-transition-timing-function: ease; -ms-transition-timing-function: ease; -o-transition-timing-function: ease; transition-timing-function: ease;}
+.container .section.ability .inner .border:after {position:absolute; content:''; width:4px; height:0; background-color:#eee; top:0; right:0; transition-duration:.1s; -webkit-transition-timing-function: ease; -moz-transition-timing-function: ease; -ms-transition-timing-function: ease; -o-transition-timing-function: ease; transition-timing-function: ease;}
+
+.container .section.service {}
+.container .section.service ul {}
+.container .section.service li {float:left; width:33.333%; text-align:center; padding-top:147px;}

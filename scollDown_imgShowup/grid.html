@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>grid</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style type="text/css">
+        /*.grid_container {display:grid; grid-template-columns: 100px 100px 100px; grid-template-rows:100px 100px 100px;}*/
+        .grid_container {display:grid; grid-template-columns: auto 100px 1fr 2fr;}
+        /*1fr이란 남은 자유 공간의 (여기서는?) 1/3(3: 총 fr)만큼의 크기를 할당. 2fr은 2/3(3: total fr)*/
+        /*.item1 {grid-column-start:1; grid-column-end:4;}*/
+/*        .item1 {grid-column:1/4;}
+        .item3 {grid-row-start:2; grid-row-end:4;}*/
+    </style>
+</head>
+<body>
+
+<div class="grid_container">
+    <div class="item1" style="background:#ff5454">1</div>
+    <div style="background:#ff4e42">2</div>
+    <div class="item3" style="background:#ff3333">3</div>
+    <div style="background:#ff6000">4</div>
+    <div style="background:#ff5656">5</div>
+    <div style="background:#ff3487">6</div>
+    <div style="background:#ff4561">7</div>
+    <div style="background:#ff9875">8</div>
+    <!--    <ul>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+            <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        </ul>-->
+</div>
+
+</body>
+</html>

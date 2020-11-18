@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Images Showup when Scroll Down (lazyload)</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+        .grid_container {position:relative; max-width:1024px; width:100%; margin:0 auto;}
+        .grid_container ul {width:100%;}
+        .grid_container ul li {float:left; width:33.333%; height:320px; opacity:0;}
+        .grid_container ul li p {width:100%; height:100%; background:linear-gradient(rgba(215, 65, 13, 0.8), rgba(100, 80, 100, 0.5)), url(https://placehold.it/960x540) no-repeat center; background-size:cover;}
+        .grid_container ul li img {width:100%; height:100%;}
+    </style>
+</head>
+<body>
+
+<div class="grid_container">
+    <ul>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><p></p></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+        <li><img src="https://placehold.it/960x540" alt="blabla"></li>
+    </ul>
+</div>
+<div class="sth">
+    <img src="https://placehold.it/960x540" alt="blabla">
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        // alert("Hey, You Hovered!")
+        var nah = Math.floor(Math.random() * 30);
+        $('.grid_container ul li').each(function() {
+            console.log(nah);
+            $(this).find('p').css('background', 'linear-gradient(rgba(215, 65, 13, 0.8), rgba(100, 80, 100, 0.5)), url(https://source.unsplash.com/random/960x540/? + nah');
+            $(this).find('img').attr('src', 'https://source.unsplash.com/random/960x540/?' + nah);
+        });
+    $(window).scroll(function() {
+        $('.grid_container ul li').each(function() {
+            var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+            if(bottom_of_window > bottom_of_object) {
+                $(this).animate({'opacity': '1'}, 1000)
+            }
+        });
+    });
+
+
+        // const bla = new Grrr ();
+/*        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const rand = Math.floor(Math.random() * 30);
+                if (entry.isIntersecting === true) {
+                    const img = entry.target.querySelector("img");
+                    entry.target.classList.add("inview");
+                    img.src = `https://source.unsplash.com/random/960x540/?${rand}`;
+                } else {
+                    entry.target.classList.remove("inview");
+                }
+            });
+        });
+        const items = document.querySelectorAll(".grid_container ul li");
+
+        items.forEach((item, index) => {
+            observer.observe(item, index);
+        });*/
+
+    });
+
+</script>
+
+</body>
+</html>

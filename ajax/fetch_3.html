@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+<h1><a href="#welcome">WEB</a></h1>
+<input type="button" value="fetch" onclick="fetch('hello').then(function(response) {
+if(response.status == '404'){
+alert('Not found');
+}
+})">
+<ol id="nav">
+
+</ol>
+<article></article>
+
+<script type="text/javascript">
+    function fetchPage(name) {
+        fetch(name).then(function(response){
+            response.text().then(function(text){
+                document.querySelector('article').innerHTML = text;
+            })
+        })
+    }
+    if(location.hash) { //해쉬가 있다면 fetchPage통해 해쉬값을 주는데 두번째 글자 다음글자를 주면되니까 substr으로 #!을 떼어냄.
+        fetchPage(location.hash.substr(2));
+    } else {
+        fetchPage('welcome')
+    }
+    //list_2에 콤마를 기준으로 각각의 항목들을 원소로하는 배열을 만들 수 있다면,
+    //그 배열에 담긴 데이터를  반복문에 따라 하나씩 꺼내서 이런형식으로 만들 수 있지 않을까.
+    fetch('list_2').then(function(response){
+        response.text().then(function(text){
+            console.log(text);
+            var items = text.split(',');
+            console.log(items); //here
+            var i = 0;
+            var tags = '';
+            while (i < items.length) {
+                var item = items[i];
+                item = item.trim();
+                console.log(item);
+                //문자의 시작과 끝을 나타내는 순수한 문자열로 역슬래시 두번
+                //string javascript에서 공백제거 -> trim
+                var tag = '<li><a href="#!'+item+'" onclick="fetchPage(\''+item+'\')">'+item+'</a></li>';
+                console.log(tag);
+                tags = tags + tag;
+                i = i +1;
+            }
+            document.querySelector('#nav').innerHTML = tags;
+        })
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hash_1</title>
+</head>
+<body>
+<h1><a href="#!welcome" onclick="fetchPage()">WEB</a></h1>
+<ol>
+    <li><a href="#css" onclick="fetchPage('css')">CSS</a></li>
+    <li><a href="#!list" onclick="fetchPage('list')">list</a></li>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p id="css">
+        <h1>id = css</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+    </p>
+</ol>
+<article></article>
+
+<script type="text/javascript">
+    function fetchPage(name) {
+        fetch(name).then(function(response){
+            response.text().then(function(text){
+                document.querySelector('article').innerHTML = text;
+            })
+        })
+    }
+    if(location.hash) { //해쉬가 있다면 fetchPage통해 해쉬값을 주는데 두번째 글자 다음글자를 주면되니까 substr으로 #!을 떼어냄.
+        fetchPage(location.hash.substr(1));
+        console.log(location.hash.substr(1));
+    } else {
+        fetchPage('welcome')
+    }
+
+</script>
+
+</body>
+</html>

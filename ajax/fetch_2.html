@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+<h1><a href="#welcome">WEB</a></h1>
+<input type="button" value="fetch" onclick="fetch('hello').then(function(response) {
+if(response.status == '404'){
+alert('Not found');
+}
+})">
+<ol id="nav">
+
+</ol>
+<article></article>
+
+<script type="text/javascript">
+    function fetchPage(name) {
+        fetch(name).then(function(response){
+            response.text().then(function(text){
+                document.querySelector('article').innerHTML = text;
+            })
+        })
+    }
+    if(location.hash) { //해쉬가 있다면 fetchPage통해 해쉬값을 주는데 두번째 글자 다음글자를 주면되니까 substr으로 #!을 떼어냄.
+        fetchPage(location.hash.substr(2));
+    } else {
+        fetchPage('welcome')
+    }
+    fetch('list').then(function(response){
+        response.text().then(function(text){
+            document.querySelector('#nav').innerHTML = text;
+        })
+    })
+
+</script>
+
+</body>
+</html>

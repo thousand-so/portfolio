@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array study</title>
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var x = 100;
+    var y = 200;
+    document.write(x);
+    document.write("<br>");
+    document.write(y);
+    document.write("<br><br>");
+
+    var arr1 = new Array();
+    arr1[0] = 100;
+    arr1[1] = 200;
+
+    document.write(arr1[0]);
+    document.write("<br>");
+    document.write(arr1[1]);
+    document.write("<br><br>");
+
+    var arr2 = new Array(100, 200, 300);
+    document.write(arr2[0], "<br>");
+    document.write(arr2[1], "<br>");
+    document.write(arr2[2], "<br><br>");
+
+    var arr3  = new Array(100, 200, 300, 400, 500);
+    document.write(arr3.length);
+
+    var arr4 = new Array(100, 200, 300, 400, 500, 600, 700, 800, 900, 1000);
+    var sum = 0;
+
+    for(var i=0; i < arr4.length; i++) {
+        sum = sum + arr4[i];
+    }
+    document.write("<br>");
+    document.write(sum);
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

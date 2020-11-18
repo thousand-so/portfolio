@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <title>flex test</title>
+    <style type="text/css">
+        /*-- #wrap 부분에 absolute로 고정하고.
+        flex-direction 기본값이 row이기 때문에 수직 적용을 위해 column으로 변경
+         -webkit- : 구글, 사파리 브라우저에 적용
+         --*/
+        #wrap {position:absolute; width:100%; height:100%; background:#333; margin:0; padding:0; top:0; left:0; display:flex; -webkit-display:flex; flex-direction:column;}
+        /*-- .map_wrap 에 flex:1 을 주어 #wrap의 height:100% 값이 확장되도록함 -> 화면 크게해서 확인
+         flex:1 = flex:1 1 0;
+         --*/
+        .map_wrap {flex:1; display:flex; flex-direction:column; width:800px; max-height:500px; min-height:300px; margin:50px auto 0; background:linear-gradient(to bottom, #aaa, #fff); border-radius:120px 120px / 50% 50% 10% 10%; padding:100px 50px;}
+        .list_filter {display:flex; height:70px;}
+        .list_filter .filter_box {flex:0 1 auto; max-width:250px; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; background-color: #ddd; border-radius:3px; border:solid 1px #333;}
+        .list_filter .filter_box:nth-child(3) {order:-1;} /*order 기본값 0.  -1 -> 맨앞으로 오게*/
+        .map {flex:1; background:pink; display:flex; /* justify-content: center;
+   align-items: center;*/}
+        .map img {margin:auto;} /*-- img 중앙정렬 --*/
+
+        /*-- flex인 footer에 margin-top:auto를 주면 별도로 min-height를 잡지않아도 브라우저 높이만큼을 잡을 수 있게 됨. --*/
+        .footer {display:flex; margin-top:auto;  background-color:#000; color:#fff; text-align:center}
+        .footer p {width:1280px; margin:0 auto; padding:50px 0;}
+    </style>
+</head>
+
+<body>
+<!-- IE 11부터 flex 지원 -->
+<div id="wrap">
+    <div class="map_wrap">
+        <div class="list_filter">
+            <div class="filter_box">abc</div>
+            <div class="filter_box">abcdef</div>
+            <div class="filter_box">abcdefghijdkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+            <div class="filter_box">abclmn</div>
+            <div class="filter_box">opqr</div>
+            <div class="filter_box">stuvw</div>
+        </div>
+        <div class="map">
+            <img src="https://cdn2.iconfinder.com/data/icons/free-1/128/Love__heart_like-256.png" alt="">
+        </div>
+    </div>
+    <div class="footer">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+</div>
+<!--
+flex: none | [ <‘flex-grow’> <‘flex-shrink’>? || <‘flex-basis’>
+기본 값 = flex: 0 1 auto
+none = flex: 0 0 auto와 같다.
+auto = flex: 1 1 auto와 같다.
+initial = flex: 0 1 auto와 같다.
+정수 = flex: 정수 1 0과 같다.
+flex-basis가 auto일 때와 0일 때의 차이점이었는데요,
+auto인 경우에는 컨텐츠 길이에 따라 영향을 받는다는 것을 알 수 있었습니다.
+margin: auto를 사용하면 auto 값을 갖는 방향(왼쪽, 오른쪽 또는 양쪽 모두)으로 빈 공간을 채우게 됩니다.
+https://www.tabmode.com/homepage/flex-direction.html ; flex-direction 참고
+https://www.vobour.com/3-flexbox-%EC%9D%B4%ED%95%B4-%EB%8B%B9%EC%8B%A0%EC%9D%B4-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%AA%A8%EB%93%A0-%EA%B2%83-understa ; 예를 들어 [item a, b, c, d (여백)] 일때 a에 margin-right:auto 주면 a (여백) b, c, d 와 같은 구조가 됨.
+https://ko.learnlayout.com/flexbox.html
+https://wit.nts-corp.com/2018/07/27/5274#a1
+https://www.vobour.com/3-flexbox-%EC%9D%B4%ED%95%B4-%EB%8B%B9%EC%8B%A0%EC%9D%B4-%EC%95%8C%EC%95%84%EC%95%BC-%ED%95%A0-%EB%AA%A8%EB%93%A0-%EA%B2%83-understa
+ -->
+
+</body>
+
+</html>

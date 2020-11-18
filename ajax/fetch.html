@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+<h1><a href="#welcome">WEB</a></h1>
+
+<input type="button" value="fetch" onclick="fetch('hello').then(function(response) {
+if(response.status == '404'){
+alert('Not found');
+}
+})">
+
+<ol>
+    <li>
+        <a href="#!html" onclick="fetchPage('html')">WEB</a><!-- 관습적 #! = hash bang 해쉬뱅이라고 부름-->
+    </li>
+    <li>
+        <a href="#!css" onclick="fetchPage('css')">CSS</a>
+    </li>
+    <li>
+        <a href="#!javascript" onclick="fetchPage('javascript')">JavaScript</a>
+    </li>
+</ol>
+<article></article>
+
+<!--<input type="button" value="fetch" onclick="fetch('css').then(function(response){response.text().then(function(text){alert(text);
+document.querySelector('article').innerHTML = text;
+})})">-->   <!--익명함수씀. 안에서만 독점적으로 쓰기때문에 이름가질필요 x.  -->
+
+<!-- //Asynchronous
+function callback() {
+console.log('response end');
+}
+=
+callback = function() {
+console.log('response end');
+==>
+onclick="fetch('css').then(function() {
+console.log('response end');})"
+패치api가 콜백함수를 실행시킬 때 저 함수의 첫번째 인자의 입력값으로 response 객체를 주면서 호출하겠다!
+onclick="fetch('css').then(function(response) {
+console.log('response end');})"
+//404가 뜰때 : 해당 파일 없을 때
+onclick="fetch('javascript').then(function(response) {
+if(response.status == '404'){
+alert('Not found');
+}
+})
+"
+//response는 패치를 통해 요청을 했을 떄 웹 서버가 응답한 결과를 담고 있는 객체.
+
+-->
+
+<script type="text/javascript">
+function fetchPage(name) {
+    fetch(name).then(function(response){
+        response.text().then(function(text){
+            document.querySelector('article').innerHTML = text;
+        })
+    })
+}
+if(location.hash) { //해쉬가 있다면 fetchPage통해 해쉬값을 주는데 두번째 글자 다음글자를 주면되니까 substr으로 #!을 떼어냄.
+    fetchPage(location.hash.substr(2));
+} else {
+    fetchPage('welcome')
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hash</title>
+</head>
+<body>
+<h1>링크를 통해 들어갔을 때 사용자를 지정한 위치에 접근하도록 만들 때. 북마크기능. fragment identity fire</h1>
+<a href="#three">three</a>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+</p>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel v
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+</p>
+<p id="three">
+    <h1>id = three</h1>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolore eligendi ipsum reiciendis ullam. Harum nemo, velit. Ab accusamus aliquam asperiores aut consequatur dolorem ducimus et hic in ipsa ipsam labore molestias neque nihil nostrum obcaecati officia placeat quas recusandae similique sit veniam, veritatis voluptates. A ab alias amet asperiores commodi ea eaque eos error esse ex facere fuga fugit incidunt ipsam, itaque necessitatibus nesciunt nihil nobis numquam odit perferendis porro quaerat quas sed sequi soluta, vel voluptas? Beatae ipsa maxime odit tempora! Cupiditate deleniti, eligendi excepturi facilis illum impedit iusto libero maiores minus mollitia necessitatibus neque perspiciatis porro sit.
+</p>
+<script type="text/javascript">
+    if(location.hash) {
+        //Fragment exists
+        console.log(location.hash);
+        console.log(location.hash.substr(1));//#샾 뒤에 있는거만.substr: 어떤 스트링 문자 전체에서 일부 (1)만 떼어냄
+    } else {
+        //Fragment doesn't exists
+    }
+</script>
+</body>
+</html>

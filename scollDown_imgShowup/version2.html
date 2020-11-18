@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>스크롤 내리면 다음 글 불러오기 (scroll 이벤트)</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/reset.css" type="text/css">
+    <style type="text/css">
+        #wrapper {width:1000px; margin:300px auto; padding:0; height:800px; border:solid 1px #ff4e42}
+        .content {height:auto; margin:0 auto;}
+        .content img {display:block; margin:30px auto;}
+    </style>
+</head>
+<body>
+
+<div id="wrapper" style="overflow-y: scroll">
+    <div class="content">
+        <img src="http://mblogthumb4.phinf.naver.net/20150225_123/doubledune__1424848940459GOCjK_JPEG/i0198468215.jpg?type=w2" alt="image">
+        <img src="https://lh5.googleusercontent.com/-xqlJyVf1QH4/AAAAAAAAAAI/AAAAAAAAAQI/Wbn9Lg342dM/photo.jpg" alt="image">
+        <img src="https://img2.akspic.com/preview/123649-homer_simpson-creative_arts-marge_simpson-sky-red-360x641.jpg" alt="image">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var imgs = '',
+             listDataArray = ["content"],
+             key = listDataArray[0],
+             dataKey = listData[key].reverse();
+
+        // console.log(dataKey);
+        // console.log(dataKey.length);
+        // console.log(dataKey[0].img_url);
+
+        for (var i = 0; i < dataKey.length; i++) {
+            // console.log(dataKey[0]);
+            // console.log(dataKey[0].img_url);
+           imgs += '<img src ="'+ dataKey[i].img_url +'" alt="image">';
+       }
+
+      /*
+       ** way 2 **
+       var imgs = '<img src="http://mblogthumb4.phinf.naver.net/20150225_123/doubledune__1424848940459GOCjK_JPEG/i0198468215.jpg?type=w2" alt="image">';
+      imgs += '<img src="http://mblogthumb4.phinf.naver.net/20150225_123/doubledune__1424848940459GOCjK_JPEG/i0198468215.jpg?type=w2"><br />';
+      imgs += '<img src="http://mblogthumb4.phinf.naver.net/20150225_123/doubledune__1424848940459GOCjK_JPEG/i0198468215.jpg?type=w2"><br />';
+      * */
+
+        $('#wrapper').scroll(function() {
+            var scrollT = $(this).scrollTop();
+            var scrollH = $(this).height();
+            var contentH = $('.content').height();
+
+            if(scrollT + scrollH >= contentH) {
+                $('.content').append(imgs);
+            }
+
+        });
+    });
+
+</script>
+<script src="scroll_list.js" type="text/javascript"></script>
+</body>
+</html>

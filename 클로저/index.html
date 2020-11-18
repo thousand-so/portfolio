@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 클로저 closer 에 대해 알아보자!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+<!--
+클로저란?!
+    외부함수(포함하고 있는)의 변수에 접근할 수 있는 내부 함수!! scope chain 으로 표현되기도 함!
+    (함수 내에서 선언한 변수를 내부함수에서 접근하면 변수를 물고있는데 이게 클로저 입니다.)
+        //*** 외부 함수에 있는 변수를 내부 함수에서 접근할 수 있다 ***
+
+    클로저는 세가지 스코프 체인을 가지는데.!!
+        1. 클로저 자신에 대한 접근(자신의 블럭내에 정의된 변수)
+        2. 외부 함수의 변수에 대한 접근
+        3. 전역 변수에 대한 접근
+
+        http://chanlee.github.io/2013/12/10/understand-javascript-closure/
+-->
+
+<!--
+같은 이름의 전역변수와 지역변수
+    같은 이름은 가지는 전역변수와 지역변수가 있을 때 이 둘을 서로 다른 변수 입니다. 하나를 변경하더라도 다른것에는 영향이 없습니다. 함수 내에서 전역 변수와 같은 이름의 지역변수를 정의해 버리면 전역변수는 가려져서 사용할 수 없게 됩니다.
+
+var name = "홍길동";
+function printName() {
+    var name = "김철수"; console.log(name); }
+----------------------------------------------------------------------------------------------------------------
+
+변수 생성시에 var 키워드를 사용하지 않고, 만들었다면 이 변수는 항상 전역변수 입니다. 이것이 함수 안에서 만들어 졌다고 하더라도 전역변수가 되어 버립니다.
+
+function printName() {
+    name = "홍길동"; console.log(name); }
+
+----------------------------------------------------------------------------------------------------------------
+
+        var global_name = "홍길동";
+
+        function makePrinter() {
+            var outer_name = "김철수";
+
+            function printName() {
+                var inner_name = "김영희";
+                console.log(global_name);
+                console.log(outer_name);
+                console.log(inner_name);
+            }
+
+            return printName;
+        }
+
+        var print = makePrinter();
+        (위의 문장으로 지역변수들(outer_name, inner_name)이 자유변수로 만들어짐. 캡쳐.캡쳐된 것.)
+
+        print();
+
+        결과)
+        홍길동
+        김철수
+        김영희
+
+        예제에서는 함수내에서 정의한  printName() 함수를 반환하여 var print; 변수에 저장합니다.
+        반환되어 print 변수에 저장된 것이 함수이므로 print도 함수 입니다. 그러므로 print(); 로 실행할 수 있습니다.
+        var print = makePrinter(); 로 반환 받은것이 클로저 입니다
+
+    클로저는 자신을 포함하고 있는 외부 함수의 인자, 지역변수 등을 외부 함수가 종료된 후에도 사용할 수 있습니다.
+    이러한 변수를 자유 변수(free variable) 이라고 부릅니다.
+    클로저가 생성될 때 범위내의 지역 변수들을 자유 변수로 만드는 것을 캡쳐(capture) 라고 합니다.
+    이 자유변수는 외부에서는 직접 접근할 수 없고, 항상 클로저를 통해서만 사용할 수 있습니다
+
+    이처럼 자유 변수를 가지는 코드를 클로저라고 합니다.
+
+----------------------------------------------------------------------------------------------------------------
+
+        function makeGreeting(name) {
+            var greeting = "안녕! ";
+
+            return function() {
+                console.log(greeting + name);
+            };
+        }
+
+        var g1 = makeGreeting("홍길동");
+        var g2 = makeGreeting("김철수");
+
+        g1();
+        g2();
+
+        결과)
+        안녕! 홍길동
+        안녕! 김철수
+        인자로 주어지는 값(홍길동, 김철수)에 따라 다른 기능을 하는 클로저가 필요하다면 이러한 형태로 작성을 하면 될 것입니다.
+----------------------------------------------------------------------------------------------------------------
+
+    var print = (function() {
+        var name = "홍길동";
+
+        return function() {
+            console.log(name);
+        };
+    })();
+
+    print();
+    보통 쓰는 이런 함수를 자기호출함수. 즉시호출함수 라고 한다.
+----------------------------------------------------------------------------------------------------------------
+    클로저 생성시 초기값을 주는 것도 가능합니다.
+
+    var print = (function(name) {
+        var greeting = "안녕! ";
+
+        return function() {
+            console.log(greeting + name);
+        };
+
+    })("홍길동");    여기여기
+
+    print();
+
+    결과)
+    안녕! 홍길동
+
+----------------------------------------------------------------------------------------------------------------
+https://offbyone.tistory.com/135
+-->
+
+<script type="text/javascript">
+    $(document).ready(function() {
+/*
+    //사이트에서 사용한 방식
+
+        ( 카운터 클로저는 자기호출 함수로 하나만 생성했습니다.  var counter = (function() {})(); )
+
+        var counter = (function() {
+            var privateCounter = 0;
+
+            function chageCounter(val) {
+                privateCounter += val;
+            }
+
+            return {
+                //증가 기능을 가지는 public 함수
+                inc : function () {
+                    chageCounter(1);
+                },
+                //감소 기능을 가지는 public 함수
+                dec : function () {
+                    chageCounter(-1);
+                },
+                //public 함수 ( 현재값 조회)
+                val : function () {
+                    return privateCounter;
+                }
+            };
+        })(); //뒤에 괄호를 뺴면 안돼*/
+
+    //기존 쓰던 방식
+        var Counter = function() {
+            var privateCounter = 0;
+
+            //외부에서는 접근할 수 없는 private 함수
+            function changeCounter(val) {
+                privateCounter += val;
+            }
+
+            return {
+                //증가 기능을 가지는 public 함수
+                inc : function () {
+                    changeCounter(1);
+                },
+                //감소 기능을 가지는 public 함수
+                dec : function () {
+                    changeCounter(-1);
+                },
+                //public 함수 ( 현재값 조회)
+                val : function () {
+                    return privateCounter;
+                }
+            };
+        };
+
+        var counter = new Counter();
+
+        counter.inc();
+        console.log("after increment : " + counter.val());
+        counter.dec();
+        console.log("after decrement : " + counter.val());
+
+        function bb() {
+
+            var abs = 3;
+
+            return function() {
+                var soso = abs+1;
+                console.log('val : '+ abs+1); //31
+                console.log('val : '+ soso); //4
+            };
+        }
+        var dd = bb();
+        dd();
+
+        //*** 외부 함수에 있는 변수를 내부 함수에서 접근할 수 있다 ***
+        //꼭 return을 써야만 클로저가 되는게 아냐
+
+/*            function outer(a) {
+            var b = "test";
+
+            setTimeout(function() {
+                alert(a);
+                alert(b);
+            }, 2000);
+        }
+        outer();*/
+
+        //꼭 return을 써야만 클로저가 되는게 아냐 - 다른방식
+/*        var outer = function(a) {
+            var b = "test";
+
+            setTimeout(function() {
+                alert(a);
+                alert(b);
+            }, 2000);
+        }();*/
+
+//       ----------------------------------------------------------------------------------------------------------------
+        /*
+        var b = 2;
+
+        function() {
+            var a = 3;
+            return a;
+        }();
+
+        함수안에 있는 변수는(a) 밖에서 절대 조작할 수 없다.
+        단, 리턴 되는 값만을 조작할 수 있다.
+
+        * */
+
+
+    });
+</script>
+</body>
+</html>
