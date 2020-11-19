@@ -59,10 +59,41 @@ hoseo.faculty = (function($) {
             });
         },
 
+        // 호버효과 추가
+        slideHoverOn : function(el) {
+            var $layer = $(el);
+            var $slideTab = $layer.find('.slider_tab_wrap .slide_tab');
+            $slideTab.on({
+                mouseenter: function() {
+                    console.log('mouseenter');
+                    if(!$(this).hasClass('on')) {
+                        console.log('yay');
+                        var onSrc = $(this).find('img').attr('data-on');
+                        $(this).find('img').attr('src', onSrc);
+                    }
+                },
+                mouseleave : function() {
+                    if(!$(this).hasClass('on')) {
+                        console.log('nono');
+                        var offSrc = $(this).find('img').attr('data-off');
+                        $(this).find('img').attr('src', offSrc);
+                    }
+                }
+            })
+        },
+        slideHoverOff : function(el) {
+            var $layer = $(el);
+            var $slideTab = $layer.find('.slider_tab_wrap .slide_tab');
+            $slideTab.off('mouseenter mouseleave')
+
+        },
+
         init : function() {
             common.slide('#container');
             common.slideTab('#container');
             common.slideTabSet('#container');
+            common.slideHoverOn('#container');
+            // common.slideHoverOff('#container');
         }
     }
     $(document).ready(function() {
