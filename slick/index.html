@@ -12,62 +12,52 @@
 <body>
     
     <div id="wrapper">
-        <div id="header"></div>
-
         <div id="container">
             <div class="slide_wrap">
                 <div class="slider">
                     <div class="item">
                         <div class="img_wrap">
-                            <div class="img" style="background-image: url(./images/studio_s1.png)"></div>
+                            <div class="img" style="background-image:url(./images/studio_s1.png)"></div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img_wrap">
-                            <div class="img" style="background-image: url(./images/studio_s1.png)"></div>
+                            <div class="img" style="background-image:url(./images/studio_s1.png)"></div>
                         </div>
                     </div>
                     <div class="item">
                         <div class="img_wrap">
-                            <div class="img" style="background-image: url(./images/studio_s1.png)"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 썸네일 이미지 -->
-                <div class="slider_tab_wrap clearfix">
-                    <div class="slider_tab_inner">
-                        <!--
-                            첫 번째 on 클래스가 있는 slide_tab의 img src 에는
-                            data-on의 src와 일치해야 합니다.
-                            두 번째 slide_tab 부터 img src가 data-off 와 동일합니다.
-                        -->
-                        <div class="slide_tab on">
-                            <button>
-                                <img src="images/studio_s1.png" alt="" data-on="images/studio_s1.png" data-off="images/slide_tab02_off.png" />
-                            </button>
-                        </div>
-                        <div class="slide_tab">
-                            <button>
-                                <img src="images/studio_s1.png" alt="" data-on="images/slide_tab02_off.png" data-off="images/studio_s1.png" />
-                            </button>
-                        </div>
-                        <div class="slide_tab">
-                            <button>
-                                <img src="images/studio_s1.png" alt="" data-on="images/slide_tab02_off.png" data-off="images/studio_s1.png" />
-                            </button>
+                            <div class="img" style="background-image:url(./images/studio_s1.png)"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
+            <!-- Thumbnail -->
+            <div class="slider_tab_wrap clearfix">
+                <div class="slider_tab_inner">
+                    <!-- 
+                        첫 번쨰 on 클래스가 있는 slide_tab의 img src 에는
+                        data-on의 src와 일치해야 합니다.
+                        두 번쨰 slide_tab부터 img src가 data-off 와 동일합니다.
+                     -->
+                     <div class="slide_tab on">
+                        <button type="button">
+                            <img src="./images/studio_s1.png" alt="" data-on="./images/studio_s1.png" data-off="./images/slide_tab02_off.png" />
+                        </button>
+                     </div>
+                     <div class="slide_tab">
+                        <button type="button">
+                            <img src="./images/slide_tab02_off.png" alt="" data-on="./images/studio_s1.png" data-off="./images/slide_tab02_off.png" />
+                        </button>
+                     </div>
+                     <div class="slide_tab">
+                        <button type="button">
+                            <img src="./images/slide_tab02_off.png" alt="" data-on="./images/studio_s1.png" data-off="./images/slide_tab02_off.png" />
+                        </button>
+                     </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="footer"></div>
     </div>
 </body>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
